@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import toast from 'react-hot-toast';
 import {useNavigate} from 'react-router-dom'
+import Maintenance from '../components/Maintenance';
 
 const Home = () => {
     const [roomId, setRoomId] = useState('');
     const [username, setUsername] = useState('');
+    const [maintenance, setMaintenance]=useState(true);
     const navigate = useNavigate();
 
     const createNewRoom = (e) => {
@@ -32,7 +34,11 @@ const Home = () => {
             joinRoom();
         } 
     }
-
+    if(maintenance){
+        return(
+            <Maintenance/>
+        )
+    }
     return (
         <div className='bg-slate-300 h-screen flex justify-center text-[#fff]'>
             <div className='flex flex-col justify-center '>
